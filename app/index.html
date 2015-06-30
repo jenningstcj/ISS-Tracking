@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ISS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="js/myjs.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        #map-canvas {
+            height: 500px;
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tracking the International Space Station</h1>
+    <hr/>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6">
+                <div>Latitude: <span id="latitude"></span>
+                </div>
+                <div>Longitude: <span id="longitude"></span>
+                </div>
+                <div id="map-canvas"></div>
+            </div>
+            <div class="col-xs-6">
+                <h4>Current Astronauts(<span id="numberOfPpl"></span>)</h4>
+                <ul id="names"></ul>
+                <br/>
+                <h4>Upcoming Passes</h4>
+                <input type="text" id="locationText">
+                <input type="submit" onclick="GetCoordinates($('#locationText').val());" value="Get Pass Times">
+                <ul id="isspass"></ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->
