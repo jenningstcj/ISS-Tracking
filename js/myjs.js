@@ -1,32 +1,5 @@
 /*global $, google, alert */
 var lat, lon, map, marker;
-
-function GetAstros() {
-    'use strict';
-    $.getJSON('http://api.open-notify.org/astros.json?callback=?', function (data) {
-        $('#numberOfPpl').text(data.number);
-        data.people.forEach(function (d) {
-            $('#names').append('<li>' + d.name + '</li>');
-        });
-    });
-}
-GetAstros();
-
-function GetISS() {
-    'use strict';
-    $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function (data) {
-        lat = data.iss_position.latitude;
-        lon = data.iss_position.longitude;
-        $('#latitude').text(lat);
-        $('#longitude').text(lon);
-        var LatLng = new google.maps.LatLng(lat, lon);
-        marker.setPosition(LatLng);
-        map.setCenter(LatLng);
-    });
-    setTimeout(GetISS, 3000);
-}
-GetISS();
-
 function initializeMap() {
     'use strict';
     var mapOptions = {
@@ -42,9 +15,36 @@ function initializeMap() {
 }
 google.maps.event.addDomListener(window, 'load', initializeMap);
 
+function moveISS() {
+    'use strict';
+    $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function (data) {
+        lat = data.iss_position.latitude;
+        lon = data.iss_position.longitude;
+        $('#latitude').text(lat);
+        $('#longitude').text(lon);
+        var LatLng = new google.maps.LatLng(lat, lon);
+        marker.setPosition(LatLng);
+        map.setCenter(LatLng);
+    });
+    setTimeout(moveISS, 5000);
+}
+moveISS();
 
+/*function getAstros() {*/
 
-function FuturePasses(myLat, myLng) {
+$.getJSON('http://api.open-notify.org/astros.json?callback=?', function (data) {
+    'use strict';
+    var number = data.number;
+    $('#numberOfPpl').text(number);
+
+    data.people.forEach(function (d) {
+        $('#astronames').append('<li>' + d.name + '</li>');
+    });
+});
+/*}
+getAstros();*/
+
+function futurePasses(myLat, myLng) {
     'use strict';
     var url = 'http://api.open-notify.org/iss-pass.json?lat=' + myLat + '&lon=' + myLng + '&alt=20&n=5&callback=?';
     $.getJSON(url, function (data) {
@@ -55,6 +55,8 @@ function FuturePasses(myLat, myLng) {
     });
 }
 
+
+
 function GetCoordinates(location) {
     'use strict';
     document.getElementById('isspass').innerHTML = "";
@@ -62,7 +64,7 @@ function GetCoordinates(location) {
     geocoder.geocode({ 'address': location}, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
             var myLat = results[0].geometry.location.lat(), myLng = results[0].geometry.location.lng();
-            FuturePasses(myLat, myLng);
+            futurePasses(myLat, myLng);
         } else {
             alert("Geocode was not successful for the following reason: " + status);
         }
