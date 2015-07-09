@@ -1,0 +1,16 @@
+#map-canvas {
+    height: 500px;
+    width: 600px;
+}
+
+table,
+td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+}
+
+table th {
+    text-align: center;
+}
