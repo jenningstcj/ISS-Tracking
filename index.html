@@ -25,12 +25,12 @@
     <hr/>
     <div class="container">
         <div class="row">
-            <div class="col-xs-6" ng-controller="issLocationCtrl">
+            <div class="col-md-6" ng-controller="issLocationCtrl">
                 <div>Latitude: {{lat}}</div>
                 <div>Longitude: {{lon}}</div>
                 <div id="map-canvas"></div>
             </div>
-            <div class="col-xs-6" ng-controller="issAstrosCtrl">
+            <div class="col-md-6" ng-controller="issAstrosCtrl">
                 <h4>Current Astronauts({{numOfAstros}})</h4>
                 <ul ng-repeat="astro in astros">
                     <li>{{astro.name}}</li>
