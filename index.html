@@ -26,17 +26,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6" ng-controller="issLocationCtrl">
+                <h4>Current Location</h4>
                 <div>Latitude: {{lat}}</div>
                 <div>Longitude: {{lon}}</div>
                 <div id="map-canvas"></div>
             </div>
             <div class="col-md-6" ng-controller="issAstrosCtrl">
-                <h4>Current Astronauts({{numOfAstros}})</h4>
+                <h4>Current Astronauts Onboard({{numOfAstros}})</h4>
                 <ul ng-repeat="astro in astros">
                     <li>{{astro.name}}</li>
                 </ul>
                 <br/>
-                <h4>Upcoming Passes</h4>
+                <h4>Search Next Pass Times</h4>
                 <input type="text" placeholder="City, State" ng-model="location" required>
                 <button ng-click="getFuturePasses();" >Get Pass Times</button>
                 <table ng-show="passes" class="ng-hide table table-striped">
