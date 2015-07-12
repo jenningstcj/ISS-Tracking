@@ -1,21 +1,22 @@
 (function () {
     'use strict';
-    angular.module('issApp').controller('issLocationCtrl', ['$scope', 'issService', function ($scope, issService) {
+    angular.module('issApp').controller('issLocationCtrl', ['issService', function (issService) {
+        var vm = this;
         var init = function () {
-                $scope.lat = "";
-                $scope.lon = "";
-                $scope.map = "";
-                $scope.marker = "";
+                vm.lat = "";
+                vm.lon = "";
+                vm.map = "";
+                vm.marker = "";
                 function initializeMap() {
                     var mapOptions = {
-                        center: { lat: $scope.lat, lng: $scope.lon},
+                        center: { lat: vm.lat, lng: vm.lon},
                         zoom: 4,
                         mapTypeId: google.maps.MapTypeId.HYBRID
                     };
-                    $scope.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-                    $scope.marker = new google.maps.Marker({
-                        position: { lat: $scope.lat, lng: $scope.lon},
-                        map: $scope.map,
+                    vm.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                    vm.marker = new google.maps.Marker({
+                        position: { lat: vm.lat, lng: vm.lon},
+                        map: vm.map,
                         title: 'ISS'
                     });
                 }
@@ -25,7 +26,7 @@
         init();
 
         var getNewLocation = function () {
-            issService.moveISS($scope);
+            issService.moveISS(vm);
             setTimeout(getNewLocation, 5000);
         };
         getNewLocation();

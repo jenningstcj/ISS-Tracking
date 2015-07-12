@@ -25,27 +25,27 @@
     <hr/>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6" ng-controller="issLocationCtrl">
+            <div class="col-md-6" ng-controller="issLocationCtrl as loc">
                 <h4>Current Location</h4>
-                <div>Latitude: {{lat}}</div>
-                <div>Longitude: {{lon}}</div>
+                <div>Latitude: {{loc.lat}}</div>
+                <div>Longitude: {{loc.lon}}</div>
                 <div id="map-canvas"></div>
             </div>
-            <div class="col-md-6" ng-controller="issAstrosCtrl">
-                <h4>Current Astronauts Onboard({{numOfAstros}})</h4>
-                <ul ng-repeat="astro in astros">
+            <div class="col-md-6" ng-controller="issAstrosCtrl as astronauts">
+                <h4>Current Astronauts Onboard({{astronauts.numOfAstros}})</h4>
+                <ul ng-repeat="astro in astronauts.astros">
                     <li>{{astro.name}}</li>
                 </ul>
                 <br/>
                 <h4>Search Next Pass Times</h4>
-                <input type="text" placeholder="City, State" ng-model="location" required>
-                <button ng-click="getFuturePasses();" >Get Pass Times</button>
-                <table ng-show="passes" class="ng-hide table table-striped">
+                <input type="text" placeholder="City, State" ng-model="astronauts.location" required>
+                <button ng-click="astronauts.getFuturePasses();" >Get Pass Times</button>
+                <table ng-show="astronauts.passes" class="ng-hide table table-striped">
                     <tr>
                         <th>Time</th>
                         <th>Duration</th>
                     </tr>
-                    <tr ng-repeat="pass in passes">
+                    <tr ng-repeat="pass in astronauts.passes">
                         <td>{{pass.risetime | formatPassTime}}</td>
                         <td>{{pass.duration | formatDurationTime}}</td>
                     </tr>

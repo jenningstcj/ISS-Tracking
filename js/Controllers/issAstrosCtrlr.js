@@ -1,21 +1,22 @@
 (function () {
     'use strict';
-    angular.module('issApp').controller('issAstrosCtrl', ['$scope', 'issService', function ($scope, issService) {
+    angular.module('issApp').controller('issAstrosCtrl', ['issService', function (issService) {
+        var vm = this;
         var init = function () {
-            $scope.numOfAstros = "";
-            $scope.astros = "";
-            issService.getAstros($scope);
+            vm.numOfAstros = "";
+            vm.astros = "";
+            issService.getAstros(vm);
         };
         init();
         
-        $scope.getFuturePasses = function () {
-            $scope.passes = "";
+        vm.getFuturePasses = function () {
+            vm.passes = "";
             var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ 'address': $scope.location}, function (results, status) {
+            geocoder.geocode({ 'address': vm.location}, function (results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
-                    $scope.myLat = results[0].geometry.location.lat();
-                    $scope.myLng = results[0].geometry.location.lng();
-                    issService.futurePasses($scope);
+                    vm.myLat = results[0].geometry.location.lat();
+                    vm.myLng = results[0].geometry.location.lng();
+                    issService.futurePasses(vm);
                 } else {
                     alert("Geocode was not successful for the following reason: " + status);
                 }
