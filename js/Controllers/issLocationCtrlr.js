@@ -26,8 +26,14 @@
         init();
 
         var getNewLocation = function () {
-            issService.moveISS(vm);
-            setTimeout(getNewLocation, 5000);
+            issService.moveISS().then(function (response) {
+                vm.lat = response.data.iss_position.latitude;
+                vm.lon = response.data.iss_position.longitude;
+                var LatLng = new google.maps.LatLng(vm.lat, vm.lon);
+                vm.marker.setPosition(LatLng);
+                vm.map.setCenter(LatLng);
+            });
+            setTimeout(getNewLocation, 3000);
         };
         getNewLocation();
         
