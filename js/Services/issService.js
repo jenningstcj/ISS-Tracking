@@ -21,7 +21,7 @@
         };
         
         this.futurePasses = function (myLat, myLng) {
-            return $http.jsonp('http://api.open-notify.org/iss-pass.json?lat=' + myLat + '&lon=' + myLng + '&alt=20&n=5&callback=JSON_CALLBACK')
+            return $http.jsonp('http://api.open-notify.org/iss-pass.json?lat=' + myLat + '&lon=' + myLng + '&alt=300&n=5&callback=JSON_CALLBACK')
                 .success(function (data) {
                     return data;
                 });
