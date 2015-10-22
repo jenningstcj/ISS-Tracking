@@ -8,7 +8,8 @@
     
     angular.module('issApp').filter('formatDurationTime', function () {
         return function (duration) {
-            return Math.round(duration / 60).toString() + "min";
+            var visible = Math.round(duration / 60);
+            return Math.round(visible / 2).toString() + "min";
         };
     });
     
