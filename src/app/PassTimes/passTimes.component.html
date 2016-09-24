@@ -1,0 +1,18 @@
+<h2>Pass Times</h2>
+
+<h4>Search Next Pass Times</h4>
+<form (ngSubmit)="getPasses()" #passForm="ngForm">
+  <input type="text" placeholder="City, State" [(ngModel)]="searchLocation" required name="searchLocation">
+  <button type="submit">Get Pass Times</button>
+</form>
+
+<table *ngIf="nextPasses" class="table table-striped">
+    <tr>
+        <th>Time</th>
+        <th>Duration</th>
+    </tr>
+    <tr *ngFor="let pass of nextPasses">
+        <td>{{pass.risetime | formatPassTime}}</td>
+        <td>{{pass.duration | formatDurationTime}}</td>
+    </tr>
+</table>

@@ -1,0 +1,5 @@
+<h2>Astronauts</h2>
+<h4>Current Astronauts Onboard(<span *ngIf="astronauts">{{astronauts.number}}</span>)</h4>
+<ul *ngIf="astronauts">
+    <li *ngFor="let astro of astronauts.people">{{astro.name}}</li>
+</ul>
