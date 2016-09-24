@@ -11,7 +11,8 @@ export const routes: Routes = [
   {path: 'map', component: MapComponent},
   {path: 'astronauts', component: AstronautsComponent},
   {path: 'passtimes', component: PassTimesComponent},
-  {path: '**', component: PageNotFoundComponent}
+  {path: '**', component: PageNotFoundComponent},
+  {path: 'dist', redirectTo: '', pathMatch: 'full'}
 ];
 
 export const routing = RouterModule.forRoot(routes);
