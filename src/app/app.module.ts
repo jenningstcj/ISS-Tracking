@@ -10,7 +10,7 @@ import {MapComponent} from './Map/map.component';
 import {AstronautsComponent} from './Astronauts/astronauts.component';
 import {PassTimesComponent} from './PassTimes/passTimes.component';
 import {PageNotFoundComponent} from './PageNotFound/pageNotFound.component';
-import {IISService} from './Shared/iis.service';
+import {ISSService} from './Shared/iss.service';
 import {FormatDurationTimePipe} from './Shared/formatDurationTime.pipe';
 import {FormatPassTimePipe} from './Shared/formatPassTime.pipe';
 
@@ -33,6 +33,6 @@ import {FormatPassTimePipe} from './Shared/formatPassTime.pipe';
     FormatPassTimePipe
   ],
   bootstrap: [ AppComponent ],
-  providers: [IISService]
+  providers: [ISSService]
 })
 export class AppModule { }

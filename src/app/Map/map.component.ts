@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 declare var google: any;
 
-import {IISService} from '../Shared/iis.service';
+import {ISSService} from '../Shared/iss.service';
 
 @Component({
     templateUrl: './map.component.html'
@@ -13,8 +13,8 @@ export class MapComponent {
     private map: any;
     private marker: any;
 
-    constructor(private iisSvc: IISService) {
-        this.iisSvc.moveISS().subscribe(
+    constructor(private issSvc: ISSService) {
+        this.issSvc.moveISS().subscribe(
             data => {
                 this.lat = data.iss_position.latitude;
                 this.lon = data.iss_position.longitude;
@@ -36,7 +36,7 @@ export class MapComponent {
 
 
     getNewLocation() {
-        this.iisSvc.moveISS().subscribe(
+        this.issSvc.moveISS().subscribe(
             data => {
                 this.lat = data.iss_position.latitude;
                 this.lon = data.iss_position.longitude;

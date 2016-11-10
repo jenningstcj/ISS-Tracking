@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {IISService} from '../Shared/iis.service';
+import {ISSService} from '../Shared/iss.service';
 
 @Component({
     templateUrl: './astronauts.component.html'
@@ -8,8 +8,8 @@ import {IISService} from '../Shared/iis.service';
 export class AstronautsComponent {
     private astronauts: any;
     private test: any;
-    constructor(private iisSvc: IISService) {
-        this.iisSvc.getAstros().subscribe(
+    constructor(private issSvc: ISSService) {
+        this.issSvc.getAstros().subscribe(
           data => this.astronauts = data
         );
     }
