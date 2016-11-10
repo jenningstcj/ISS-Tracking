@@ -11,6 +11,6 @@ This repo includes the following versions:
 
 [Angular 2.0](https://github.com/jenningstcj/ISS-Tracking/tree/angular2)
 
-Elm (To do..)
+[Elm](https://github.com/jenningstcj/IntroToElm/tree/master/Demos/GoogleMaps) [demo](https://jenningstcj.github.io/IntroToElm/Demos/GoogleMaps/index.html)
 
 To view a demo of the Angular 2.0 version, go [here](https://jenningstcj.github.io/ISS-Tracking/dist).  In Google Chrome, you may have to 'allow unsafe scripts' in the address bar since the Open Notify API is non-HTTPS.
