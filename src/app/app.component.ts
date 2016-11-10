@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'iis-app',
+  selector: 'iss-app',
   templateUrl: './app.component.html'
 })
 export class AppComponent { }
